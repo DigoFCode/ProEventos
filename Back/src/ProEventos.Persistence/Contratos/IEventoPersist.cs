@@ -1,0 +1,9 @@
+using ProEventos.Domain;
+
+namespace ProEventos.Persistence.Contratos;
+public interface IEventoPersist
+{
+    Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes = false);
+    Task<Evento[]> GetAllEventosAsync(bool includePalestrantes = false);
+    Task<Evento> GetAllEventosByIdAsync(int EventoId, bool includePalestrantes = false);
+}
