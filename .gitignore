@@ -478,7 +478,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Miscellaneous
-/.angular/cache
+front/ProEventos-App/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
