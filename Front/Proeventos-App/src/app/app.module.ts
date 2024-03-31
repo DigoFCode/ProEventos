@@ -16,15 +16,15 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
   declarations: [
     AppComponent,
     EventosComponent,
-      PalestrantesComponent,
-      NavComponent
-   ],
+    PalestrantesComponent,
+    NavComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CollapseModule,
+    CollapseModule.forRoot(),
     FormsModule
   ],
   providers: [],
