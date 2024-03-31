@@ -1,20 +1,28 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { finalize, catchError, throwError } from 'rxjs';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
+
+import { EventoService } from '../services/evento.service';
+import { Evento } from '../models/Evento';
 
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.scss'],
+  //providers: [EventoService],
 })
 export class EventosComponent {
-  [x: string]: any;
-  public eventos: any = [];
-  widthImg: number = 150;
-  marginImg: number = 2;
-  exibirImagem = false;
+  modalRef = {} as BsModalRef;
+  public eventos: Evento[] = [];
+  public eventosFiltrados: Evento[] = [];
+
+  public widthImg: number = 150;
+  public marginImg: number = 2;
+  public exibirImagem = false;
+
   private _filtroLista: string = '';
-  eventosFiltrados: any = [];
 
   public get filtroLista() {
     return this._filtroLista;
@@ -25,27 +33,31 @@ export class EventosComponent {
       ? this.filtraEventos(this.filtroLista)
       : this.eventos;
   }
-  constructor(private http: HttpClient) {}
+
+  constructor(
+    private eventoService: EventoService,
+    private modalService: BsModalService,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   /**
-   * Initializes the component and calls the 'getEventos' method to retrieve the eventos.
+   * Initializes the component and calls the `getEventos` method.
    *
-   * This method is called when the component is initialized. It calls the 'getEventos'
-   * method to retrieve the eventos and populate the component's data.
-   *
-   * @return {void} This method does not return a value.
+   * @return {void} This function does not return anything.
    */
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getEventos();
+    this.spinner.show();
   }
 
   /**
    * A function that filters events based on a specified criteria.
    *
-   * @param filtrarPor The criteria to filter events by
-   * @returns The filtered list of events
+   * @param {string} filtrarPor - the criteria to filter events by
+   * @return {Evento[]} an array of events that match the specified criteria
    */
-  filtraEventos(filtrarPor: string): Event[] {
+  public filtraEventos(filtrarPor: string): Evento[] {
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.eventos.filter(
       ({ tema, local }: { tema: string; local: string }) =>
@@ -55,21 +67,32 @@ export class EventosComponent {
   }
 
   /**
-   * Retrieves the list of events from the API.
+   * Retrieves the list of events from the event service and updates the component's state with the retrieved data.
    *
    * @return {void} This function does not return a value.
    */
-  getEventos(): void {
-    this.http
-      .get('https://localhost:7056/api/eventos')
-      .pipe(
-        catchError((error) => {
-          return throwError(() => new Error(error.message));
-        })
-      )
-      .subscribe((response) => {
-        this.eventos = response;
+  public getEventos(): void {
+    this.eventoService.getEventos().subscribe({
+      next: (eventos: Evento[]) => {
+        this.eventos = eventos;
         this.eventosFiltrados = this.eventos;
-      });
+      },
+      error: (error: any) => {
+        console.error(error);
+        this.spinner.hide();
+        this.toastr.error('Erro ao carregar eventos!', 'Erro!');
+      },
+      complete: () => this.spinner.hide(),
+    });
+  }
+  public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
+  }
+  public confirm(): void {
+    this.modalRef.hide();
+    this.toastr.success('Evento excluído com sucesso!', 'Excluído!');
+  }
+  public decline(): void {
+    this.modalRef.hide();
   }
 }

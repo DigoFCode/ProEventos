@@ -3,20 +3,16 @@
 
 <div class="d-flex align-items-center">
   <label for="filtro" class="me-2 mb-2">Filtro:</label>
-  <input
-    type="text"
-    class="form-control mb-2"
-    placeholder="buscar"
-    [(ngModel)]="filtroLista"
-    style="max-width: 300px"
-  />
+  <input type="text" class="form-control mb-2" placeholder="buscar" [(ngModel)]="filtroLista"
+    style="max-width: 300px" />
 </div>
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>
       <th (click)="exibirImagem = !exibirImagem">
         <button type="button" class="btn btn-outline-light btn-sm">
-          {{ exibirImagem ? "Ocultar" : "Exibir" }}
+          <i class="{{ exibirImagem ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i>
+          {{ exibirImagem ? 'Ocultar' : 'Exibir' }}
         </button>
       </th>
       <th>#</th>
@@ -31,28 +27,23 @@
   <tbody *ngIf="eventos?.length; else notFound">
     <tr *ngFor="let evento of eventosFiltrados">
       <td>
-        <img
-          [collapse]="!exibirImagem"
-          [isAnimated]="true"
-          [ngStyle]="{
+        <img [collapse]="!exibirImagem" [isAnimated]="true" [ngStyle]="{
             'width.px': widthImg,
             'margin.px': marginImg
-          }"
-          [src]="'/assets/' + evento.imagemURL"
-        />
+          }" [src]="'/assets/' + evento.imagemURL" />
       </td>
       <td>{{ evento.id }}</td>
       <td>{{ evento.tema }}</td>
       <td>{{ evento.local }}</td>
-      <td>{{ evento.dataEvento | date }}</td>
+      <td>{{ evento.data| DateTimePipe }}</td>
       <td>{{ evento.qtdPessoas }}</td>
-      <td>{{ evento.lote }}</td>
+      <td>{{ evento.lotes[0].nome | uppercase }}</td>
       <td>
-        <button type="button" class="btn btn-primary btn-sm me-2">
-          Editar
+        <button type="button" class="btn btn-primary btn-sm me-2" tooltip="Editar">
+          <i class="fa fa-pencil-alt"></i>
         </button>
-        <button type="button" class="btn btn-danger btn-sm me-2">
-          Excluir
+        <button type="button" class="btn btn-danger btn-sm me-2" tooltip="Excluir" (click)="openModal(template)">
+          <i class="fa fa-trash"></i>
         </button>
       </td>
     </tr>
@@ -65,3 +56,12 @@
     </tr>
   </ng-template>
 </table>
+
+{{eventos | json}}
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja excluir este evento?</p>
+    <button type="button" class="btn btn-default" (click)="decline()">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="confirm()">Confirmar</button>
+  </div>
+</ng-template>
