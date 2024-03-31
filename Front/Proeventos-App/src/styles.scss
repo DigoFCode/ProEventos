@@ -9,3 +9,8 @@
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 @import "node_modules/ngx-spinner/animations/timer";
+@import '../node_modules/bootswatch/dist/sandstone/bootstrap.min.css';
+
+.btn{
+  text-transform: none;
+}
