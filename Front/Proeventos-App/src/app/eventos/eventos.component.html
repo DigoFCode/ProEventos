@@ -14,9 +14,9 @@
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>
-      <th (click)="mostrarImagem = !mostrarImagem">
+      <th (click)="exibirImagem = !exibirImagem">
         <button type="button" class="btn btn-outline-light btn-sm">
-          {{ mostrarImagem ? "Ocultar" : "Exibir" }}
+          {{ exibirImagem ? "Ocultar" : "Exibir" }}
         </button>
       </th>
       <th>#</th>
@@ -32,7 +32,7 @@
     <tr *ngFor="let evento of eventosFiltrados">
       <td>
         <img
-          [collapse]="!mostrarImagem"
+          [collapse]="!exibirImagem"
           [isAnimated]="true"
           [ngStyle]="{
             'width.px': widthImg,
@@ -51,7 +51,9 @@
         <button type="button" class="btn btn-primary btn-sm me-2">
           Editar
         </button>
-        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+        <button type="button" class="btn btn-danger btn-sm me-2">
+          Excluir
+        </button>
       </td>
     </tr>
   </tbody>

@@ -12,22 +12,22 @@ public class GeralPersist : IGeralPersist
         this._context = context;
 
     }
-    public void Add<T>(T etity) where T : class
+    public void Add<T>(T entity) where T : class
     {
-        _context.Add(etity);
+        _context.Add(entity);
     }
-    public void Update<T>(T etity) where T : class
+    public void Update<T>(T entity) where T : class
     {
-        _context.Update(etity);
+        _context.Update(entity);
     }
-    public void Delete<T>(T etity) where T : class
+    public void Delete<T>(T entity) where T : class
     {
-        _context.Remove(etity);
+        _context.Remove(entity);
     }
 
-    public void DeleteRange<T>(T[] etityArray) where T : class
+    public void DeleteRange<T>(T[] entityArray) where T : class
     {
-        _context.RemoveRange(etityArray);
+        _context.RemoveRange(entityArray);
     }
 
     public async Task<bool> SaveChangesAsync()

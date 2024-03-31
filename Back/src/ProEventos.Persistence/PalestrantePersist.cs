@@ -18,7 +18,7 @@ public class PalestrantePersist : IPalestrantePersist
 
         if (includeEventos)
         {
-            query = query.Include(pe => pe.PalestrantesEventos).ThenInclude(e => e.Evento);
+            query = query.Include(pe => pe.PalestrantesEventos!).ThenInclude(e => e.Evento);
         }
 
         query = query.AsNoTracking().OrderBy(p => p.Id);
@@ -31,7 +31,7 @@ public class PalestrantePersist : IPalestrantePersist
 
         if (includeEventos)
         {
-            query = query.Include(pe => pe.PalestrantesEventos).ThenInclude(e => e.Evento);
+            query = query.Include(pe => pe.PalestrantesEventos!).ThenInclude(e => e.Evento);
         }
 
         query = query.AsNoTracking().OrderBy(p => p.Id).Where(p => p.Nome.ToLower().Contains(Nome.ToLower()));
@@ -44,7 +44,7 @@ public class PalestrantePersist : IPalestrantePersist
 
         if (includeEventos)
         {
-            query = query.Include(pe => pe.PalestrantesEventos).ThenInclude(e => e.Evento);
+            query = query.Include(pe => pe.PalestrantesEventos!).ThenInclude(e => e.Evento);
         }
 
         query = query.AsNoTracking().OrderBy(p => p.Id).Where(p => p.Id == PalestranteId);

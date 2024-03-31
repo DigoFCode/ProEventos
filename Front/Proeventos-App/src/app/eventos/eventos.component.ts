@@ -7,13 +7,12 @@ import { finalize, catchError, throwError } from 'rxjs';
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.scss'],
 })
-
 export class EventosComponent {
   [x: string]: any;
   public eventos: any = [];
   widthImg: number = 150;
   marginImg: number = 2;
-  mostrarImagem = false;
+  exibirImagem = false;
   private _filtroLista: string = '';
   eventosFiltrados: any = [];
 
