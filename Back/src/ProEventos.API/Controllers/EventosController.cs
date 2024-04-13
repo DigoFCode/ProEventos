@@ -36,7 +36,7 @@ public class EventosController : ControllerBase
     {
         try
         {
-            var eventos = await _eventoService.GetAllEventosByIdAsync(id, true);
+            var eventos = await _eventoService.GetEventoByIdAsync(id, true);
             if (eventos == null) return NoContent();
 
             return Ok(eventos);
@@ -104,17 +104,14 @@ public class EventosController : ControllerBase
     {
         try
         {
-            var eventos = await _eventoService.DeleteEvento(id);
-            if (eventos == null) return NoContent();
-            
-            return await _eventoService.DeleteEvento(id) ?
-                Ok("Deletado com sucesso") :
-                throw new Exception("Erro ao deletar");
+            return await _eventoService.DeleteEvento(id)
+                ? Ok(new { message = "Deletado com sucesso" })
+                : throw new Exception("Ocorreu um problem não específico ao tentar deletar Evento.");
         }
         catch (Exception ex)
         {
             return this.StatusCode(StatusCodes.Status500InternalServerError,
-                $"Erro ao tentar deletar evento. Erro: {ex.Message}");
+                    $"Erro ao tentar deletar eventos. Erro: {ex.Message}");
         }
     }
 }
