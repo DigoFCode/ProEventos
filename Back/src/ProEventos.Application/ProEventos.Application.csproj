@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Proeventos.Domain\ProEventos.Domain.csproj" />
-    <ProjectReference Include="..\Proeventos.Persistence\ProEventos.Persistence.csproj" />
+    <ProjectReference Include="..\ProEventos.Domain\ProEventos.Domain.csproj" />
+    <ProjectReference Include="..\ProEventos.Persistence\ProEventos.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

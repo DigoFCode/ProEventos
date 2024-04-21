@@ -3,21 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProEventos.Application", "ProEventos.Application\ProEventos.Application.csproj", "{D6568B32-37C0-4523-B808-E1E39DC142EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEventos.Application", "ProEventos.Application\ProEventos.Application.csproj", "{D6568B32-37C0-4523-B808-E1E39DC142EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProEventos.Domain", "ProEventos.Domain\ProEventos.Domain.csproj", "{7EB6FA13-7D11-4193-B288-3F88CB248492}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEventos.Domain", "ProEventos.Domain\ProEventos.Domain.csproj", "{7EB6FA13-7D11-4193-B288-3F88CB248492}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProEventos.API", "ProEventos.Api\ProEventos.API.csproj", "{5595463D-12D4-4CF3-ACE2-B869947EFE05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEventos.API", "ProEventos.Api\ProEventos.API.csproj", "{5595463D-12D4-4CF3-ACE2-B869947EFE05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProEventos.Persistence", "ProEventos.Persistence\ProEventos.Persistence.csproj", "{F257EC3A-F24F-414F-B15C-9A87DB34D235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEventos.Persistence", "ProEventos.Persistence\ProEventos.Persistence.csproj", "{F257EC3A-F24F-414F-B15C-9A87DB34D235}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{366CB3C2-E931-490F-B659-4F68D4A2330B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D6568B32-37C0-4523-B808-E1E39DC142EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +35,12 @@ Global
 		{F257EC3A-F24F-414F-B15C-9A87DB34D235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F257EC3A-F24F-414F-B15C-9A87DB34D235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F257EC3A-F24F-414F-B15C-9A87DB34D235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{366CB3C2-E931-490F-B659-4F68D4A2330B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366CB3C2-E931-490F-B659-4F68D4A2330B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366CB3C2-E931-490F-B659-4F68D4A2330B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366CB3C2-E931-490F-B659-4F68D4A2330B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  proeventos.api:
+    image: ${DOCKER_REGISTRY-}proeventosapi
+    build:
+      context: .
+      dockerfile: ProEventos.Api/Dockerfile
