@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-using ProEventos.Domain;
 using ProEventos.Application.Dtos;
 
 namespace ProEventos.Application.Contratos

@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using AutoMapper;
 using ProEventos.Application.Contratos;
 using ProEventos.Application.Dtos;

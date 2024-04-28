@@ -5,12 +5,18 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Evento } from '@app/models/Evento';
 import { EventoService } from '@app/services/evento.service';
+import { environment } from '@environments/environment';
 @Component({
   selector: 'app-evento-lista',
   templateUrl: './evento-lista.component.html',
   styleUrls: ['./evento-lista.component.scss'],
 })
 export class EventoListaComponent implements OnInit {
+  mostraImagem(imagemURL: string) {
+    return imagemURL != ''
+      ? `${environment.apiUrl}resources/images/` + imagemURL
+      : 'assets/semimagem.jpeg';
+  }
   modalRef: BsModalRef;
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
@@ -82,11 +88,12 @@ export class EventoListaComponent implements OnInit {
       .deleteEvento(this.eventoId)
       .subscribe(
         (result: any) => {
-            this.toastr.success(
-              'O Evento foi deletado com Sucesso.',
-              'Deletado!')
-            this.carregarEventos();
-          },
+          this.toastr.success(
+            'O Evento foi deletado com Sucesso.',
+            'Deletado!'
+          );
+          this.carregarEventos();
+        },
         (error: any) => {
           console.error(error);
           this.toastr.error(

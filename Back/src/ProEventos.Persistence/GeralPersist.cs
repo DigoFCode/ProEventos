@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using ProEventos.Domain;
 using ProEventos.Persistence.Contextos;
 using ProEventos.Persistence.Contratos;
 
